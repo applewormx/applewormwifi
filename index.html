@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AppleWorm WiFi</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d") center/cover no-repeat;
+      color: #fff;
+    }
+
+    .overlay {
+      min-height: 100vh;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      font-size: 36px;
+      margin-right: 8px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .desc {
+      font-size: 15px;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .packages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .purple { background: #8b5cf6; }
+    .pink { background: #ec4899; }
+    .orange { background: #f97316; }
+    .blue { background: #3b82f6; }
+    .red { background: #ef4444; }
+    .teal { background: #14b8a6; }
+    .green { background: #22c55e; }
+
+    .call {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #10b981;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    footer {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      
+      <h1><span>📶</span>AppleWorm WiFi</h1>
+      <div class="subtitle">Access Fast and Affordable Packages</div>
+      <div class="desc">Select a package to get connected</div>
+
+      <div class="packages">
+        <button class="btn purple">1 HOUR UNLIMITED @10/-</button>
+        <button class="btn pink">3 HOURS UNLIMITED @20/-</button>
+        <button class="btn orange">6 HOURS UNLIMITED @30/-</button>
+
+        <button class="btn blue">12 HOURS UNLIMITED @40/-</button>
+        <button class="btn red">24 HOURS UNLIMITED @50/-</button>
+        <button class="btn orange">3 DAYS UNLIMITED @120/-</button>
+
+        <button class="btn teal">7 DAYS UNLIMITED @300/-</button>
+        <button class="btn green">1 MONTH UNLIMITED @800/-</button>
+      </div>
+
+      <a class="call" href="tel:0719111040">📞 Call us: 0719111040</a>
+
+      <footer>
+        Copyright © 2025 APPLEWORM WIFI LIMITED
+      </footer>
+
+    </div>
+  </div>
+</body>
+</html>
