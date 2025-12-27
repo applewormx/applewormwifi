@@ -1,200 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Appleworm WiFi</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AppleWorm WiFi</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
 
     body {
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        /* Background image */
-        background: url('A_promotional_webpage_webpage_for_"Appleworm_WiFi".png') no-repeat center center fixed;
-        background-size: cover;
-        color: #fff;
-        padding: 50px;
+      min-height:100vh;
+      background:url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d") center/cover no-repeat;
+      color:#fff;
     }
 
-    h1 {
-        font-size: 3em;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px #333;
+    .overlay {
+      min-height:100vh;
+      background:rgba(0,0,0,0.55);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
     }
 
-    p {
-        font-size: 1.2em;
-        margin-bottom: 30px;
-        text-shadow: 1px 1px #333;
+    h1 { font-size:42px; margin-bottom:10px; }
+    .subtitle { font-size:20px; font-weight:600; margin-bottom:6px; }
+    .desc { font-size:15px; opacity:.9; margin-bottom:30px; }
+
+    .packages {
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      margin-bottom:25px;
     }
 
-    .plan-button {
-        display: inline-block;
-        margin: 10px;
-        padding: 15px 30px;
-        font-size: 18px;
-        background: linear-gradient(45deg, #ff6a00, #ee0979);
-        color: white;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    .btn {
+      padding:12px 20px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      color:#fff;
+      font-weight:600;
+      transition:transform .2s;
     }
 
-    .plan-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    }
+    .btn:hover { transform:scale(1.05); }
 
-    /* Modal styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.7);
-    }
+    .purple{background:#8b5cf6;}
+    .pink{background:#ec4899;}
+    .orange{background:#f97316;}
+    .blue{background:#3b82f6;}
+    .red{background:#ef4444;}
+    .teal{background:#14b8a6;}
+    .green{background:#22c55e;}
+    .whatsapp{background:#25D366;color:#000;}
 
-    .modal-content {
-        background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        margin: 10% auto;
-        padding: 30px;
-        border-radius: 15px;
-        width: 90%;
-        max-width: 400px;
-        color: #fff;
-        text-align: left;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .close {
-        color: #fff;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .close:hover {
-        color: #000;
-    }
-
-    input[type="text"], input[type="submit"] {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        box-sizing: border-box;
-        border-radius: 8px;
-        border: none;
-        font-size: 16px;
-    }
-
-    input[type="text"] {
-        border: 2px solid #fff;
-        background: rgba(255,255,255,0.2);
-        color: #fff;
-    }
-
-    input[type="text"]::placeholder {
-        color: #f0f0f0;
-    }
-
-    input[type="submit"] {
-        background: linear-gradient(45deg, #00f260, #0575e6);
-        color: white;
-        cursor: pointer;
-        transition: 0.3s;
-        font-weight: bold;
-    }
-
-    input[type="submit"]:hover {
-        background: linear-gradient(45deg, #0575e6, #00f260);
-    }
-
-    .error {
-        color: yellow;
-        font-size: 14px;
-    }
-</style>
+    footer { font-size:13px; opacity:.8; margin-top:20px; }
+  </style>
 </head>
 <body>
 
-<h1>Appleworm WiFi</h1>
-<p>Choose a plan:</p>
+<div class="overlay">
+  <div>
+    <h1>📶 AppleWorm WiFi</h1>
+    <div class="subtitle">Access Fast and Affordable Packages</div>
+    <div class="desc">Select a package to get connected</div>
 
-<button class="plan-button" data-plan="1 hr unlimited-10">1 hr - 10</button>
-<button class="plan-button" data-plan="3 hrs unlimited-20">3 hrs - 20</button>
-<button class="plan-button" data-plan="6 hrs unlimited-30">6 hrs - 30</button>
-<button class="plan-button" data-plan="12 hrs unlimited-40">12 hrs - 40</button>
-<button class="plan-button" data-plan="24 hrs unlimited-50">24 hrs - 50</button>
-<button class="plan-button" data-plan="3 days unlimited-120">3 days - 120</button>
-<button class="plan-button" data-plan="7 days unlimited-300">7 days - 300</button>
-<button class="plan-button" data-plan="1 month unlimited-800">1 month - 800</button>
-
-<!-- Modal -->
-<div id="paymentModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Payment</h2>
-        <p id="selectedPlan"></p>
-        <form id="paymentForm">
-            <label for="phone">Enter phone number (07xxxxxxx or 01xxxxxxx):</label>
-            <input type="text" id="phone" name="phone" maxlength="10" placeholder="0712345678" required>
-            <div class="error" id="errorMsg"></div>
-            <input type="submit" value="Proceed to Pay">
-        </form>
+    <div class="packages">
+      <button class="btn purple" onclick="goPay('1 Hour Unlimited',10)">1 HOUR @10/-</button>
+      <button class="btn pink" onclick="goPay('3 Hours Unlimited',20)">3 HOURS @20/-</button>
+      <button class="btn orange" onclick="goPay('6 Hours Unlimited',30)">6 HOURS @30/-</button>
+      <button class="btn blue" onclick="goPay('12 Hours Unlimited',40)">12 HOURS @40/-</button>
+      <button class="btn red" onclick="goPay('24 Hours Unlimited',50)">24 HOURS @50/-</button>
+      <button class="btn orange" onclick="goPay('3 Days Unlimited',120)">3 DAYS @120/-</button>
+      <button class="btn teal" onclick="goPay('7 Days Unlimited',300)">7 DAYS @300/-</button>
+      <button class="btn green" onclick="goPay('1 Month Unlimited',800)">1 MONTH @800/-</button>
     </div>
+
+    <button class="btn whatsapp" onclick="contactSupport()">
+      💬 Customer Support
+    </button>
+
+    <footer>© 2025 APPLEWORM WIFI LIMITED</footer>
+  </div>
 </div>
 
 <script>
-    const buttons = document.querySelectorAll('.plan-button');
-    const modal = document.getElementById('paymentModal');
-    const closeModal = document.querySelector('.close');
-    const selectedPlanText = document.getElementById('selectedPlan');
-    const paymentForm = document.getElementById('paymentForm');
-    const phoneInput = document.getElementById('phone');
-    const errorMsg = document.getElementById('errorMsg');
+  function goPay(pkg, amount) {
+    window.location.href =
+      "pay.html?package=" + encodeURIComponent(pkg) + "&amount=" + amount;
+  }
 
-    let selectedPlan = '';
+  function contactSupport() {
+    const phone = "254719111040";
+    const whatsapp = "https://wa.me/" + phone;
+    const call = "tel:+254719111040";
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            selectedPlan = button.getAttribute('data-plan');
-            selectedPlanText.textContent = `You selected: ${selectedPlan}`;
-            phoneInput.value = '';
-            errorMsg.textContent = '';
-            modal.style.display = 'block';
-        });
-    });
-
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    paymentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const phone = phoneInput.value.trim();
-
-        if (!/^(07|01)\d{8}$/.test(phone)) {
-            errorMsg.textContent = 'Invalid phone number format.';
-            return;
-        }
-
-        alert(`Proceeding to payment for ${selectedPlan} with phone number: ${phone}`);
-        modal.style.display = 'none';
-    });
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.location.href = whatsapp;
+    } else {
+      window.open(whatsapp, "_blank");
+      setTimeout(() => { window.location.href = call; }, 1200);
+    }
+  }
 </script>
 
 </body>
