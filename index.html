@@ -66,7 +66,7 @@
       display:none;
       position:fixed;
       top:0; left:0; right:0; bottom:0;
-      background:rgba(0,0,0,0.7);
+      background:rgba(0,0,0,0.8);
       justify-content:center;
       align-items:center;
       z-index:1000;
@@ -78,35 +78,81 @@
       border-radius:16px;
       padding:30px;
       width:90%;
-      max-width:400px;
+      max-width:420px;
       text-align:center;
       box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      position:relative;
     }
 
     .modal h2 {
-      margin-bottom:15px;
-      font-size:28px;
+      margin-bottom:10px;
+      font-size:26px;
+      color:#333;
     }
 
     .modal .price {
       font-size:36px;
       font-weight:700;
       color:#8b5cf6;
-      margin:20px 0;
+      margin:15px 0;
     }
 
-    .modal .pay-btn {
+    .input-group {
+      margin:20px 0;
+      text-align:left;
+    }
+
+    .input-group label {
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      color:#444;
+    }
+
+    .input-group input {
+      width:100%;
+      padding:14px;
+      border:2px solid #ddd;
+      border-radius:12px;
+      font-size:18px;
+      text-align:center;
+    }
+
+    .input-group input:focus {
+      outline:none;
+      border-color:#8b5cf6;
+    }
+
+    .error {
+      color:#ef4444;
+      font-size:14px;
+      margin-top:8px;
+      min-height:20px;
+    }
+
+    .pay-btn {
       background:#8b5cf6;
       padding:14px 30px;
       font-size:18px;
-      margin-top:20px;
+      margin-top:15px;
+      opacity:0.5;
+      cursor:not-allowed;
+    }
+
+    .pay-btn.enabled {
+      opacity:1;
+      cursor:pointer;
+    }
+
+    .pay-btn.enabled:hover {
+      transform:scale(1.05);
     }
 
     .close-btn {
       position:absolute;
       top:10px;
       right:15px;
-      font-size:30px;
+      font-size:32px;
       cursor:pointer;
       color:#aaa;
     }
@@ -147,23 +193,81 @@
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <h2 id="modalPackage">Package Name</h2>
     <div class="price" id="modalAmount">KSh 0</div>
-    <p>Proceed to pay via M-Pesa or contact support for payment instructions.</p>
-    <button class="btn pay-btn" onclick="contactSupport()">Pay Now via WhatsApp</button>
+
+    <div class="input-group">
+      <label for="phoneInput">Enter Your M-Pesa Number</label>
+      <input type="tel" id="phoneInput" placeholder="e.g. 0712345678" maxlength="10" />
+      <div class="error" id="errorMsg"></div>
+    </div>
+
+    <button class="btn pay-btn" id="payButton" disabled>Pay Now</button>
   </div>
 </div>
 
 <script>
+  let selectedPackage = '';
+  let selectedAmount = 0;
+
   function openModal(pkg, amount) {
+    selectedPackage = pkg;
+    selectedAmount = amount;
+
     document.getElementById('modalPackage').textContent = pkg;
     document.getElementById('modalAmount').textContent = 'KSh ' + amount;
+    document.getElementById('phoneInput').value = '';
+    document.getElementById('errorMsg').textContent = '';
+    document.getElementById('payButton').disabled = true;
+    document.getElementById('payButton').classList.remove('enabled');
+
     document.getElementById('paymentModal').style.display = 'flex';
+    document.getElementById('phoneInput').focus();
   }
 
   function closeModal() {
     document.getElementById('paymentModal').style.display = 'none';
   }
 
-  // Close modal when clicking outside the modal content
+  // Validate phone number as user types
+  document.getElementById('phoneInput').addEventListener('input', function(e) {
+    let phone = e.target.value.replace(/\D/g, ''); // Remove non-digits
+    e.target.value = phone;
+
+    const errorMsg = document.getElementById('errorMsg');
+    const payBtn = document.getElementById('payButton');
+
+    if (phone.length === 10 && (phone.startsWith('07') || phone.startsWith('01'))) {
+      errorMsg.textContent = '';
+      payBtn.disabled = false;
+      payBtn.classList.add('enabled');
+    } else {
+      if (phone.length > 0) {
+        if (phone.length !== 10) {
+          errorMsg.textContent = 'Phone number must be exactly 10 digits';
+        } else {
+          errorMsg.textContent = 'Must start with 07 or 01';
+        }
+      } else {
+        errorMsg.textContent = '';
+      }
+      payBtn.disabled = true;
+      payBtn.classList.remove('enabled');
+    }
+  });
+
+  // Pay button click → send to WhatsApp
+  document.getElementById('payButton').addEventListener('click', function() {
+    if (this.disabled) return;
+
+    const phone = document.getElementById('phoneInput').value;
+    const message = `Hello AppleWorm Support,\n\nI'd like to purchase:\n*Package:* ${selectedPackage}\n*Amount:* KSh ${selectedAmount}\n*My M-Pesa Number:* ${phone}\n\nPlease process my payment. Thank you!`;
+
+    const whatsappUrl = `https://wa.me/254719111040?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, '_blank');
+    closeModal();
+  });
+
+  // Close modal when clicking outside
   window.onclick = function(event) {
     const modal = document.getElementById('paymentModal');
     if (event.target === modal) {
@@ -174,13 +278,11 @@
   function contactSupport() {
     const phone = "254719111040";
     const whatsapp = "https://wa.me/" + phone;
-    const call = "tel:+254719111040";
 
     if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
       window.location.href = whatsapp;
     } else {
       window.open(whatsapp, "_blank");
-      setTimeout(() => { window.location.href = call; }, 1200);
     }
   }
 </script>
