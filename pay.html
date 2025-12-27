@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AppleWorm WiFi Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: #020617;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #0f172a;
+      padding: 30px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    h2 { margin-bottom: 10px; }
+
+    .pkg {
+      color: #22c55e;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 999px;
+      border: none;
+      background: #22c55e;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #f87171;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>AppleWorm WiFi Payment</h2>
+  <div class="pkg" id="pkg"></div>
+
+  <input
+    type="tel"
+    id="phone"
+    placeholder="07XXXXXXXX or 01XXXXXXXX"
+    maxlength="10"
+  >
+
+  <button onclick="validate()">Proceed to Pay</button>
+  <div class="error" id="error"></div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const pkg = params.get("package");
+  const amount = params.get("amount");
+
+  document.getElementById("pkg").textContent =
+    pkg + " — KES " + amount;
+
+  function validate() {
+    const phone = document.getElementById("phone").value.trim();
+    const error = document.getElementById("error");
+
+    // MUST start with 07 or 01 and be exactly 10 digits
+    const regex = /^(07|01)[0-9]{8}$/;
+
+    if (!regex.test(phone)) {
+      error.textContent =
+        "Invalid number. Use 07XXXXXXXX or 01XXXXXXXX (10 digits).";
+      return;
+    }
+
+    error.textContent = "";
+
+    // PLACE MPESA STK PUSH HERE
+    alert("Phone valid. Ready to charge KES " + amount);
+  }
+</script>
+
+</body>
+</html>
