@@ -1,291 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AppleWorm WiFi</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
-
-    body {
-      min-height:100vh;
-      background:url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d") center/cover no-repeat;
-      color:#fff;
-    }
-
-    .overlay {
-      min-height:100vh;
-      background:rgba(0,0,0,0.55);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:20px;
-    }
-
-    h1 { font-size:42px; margin-bottom:10px; }
-    .subtitle { font-size:20px; font-weight:600; margin-bottom:6px; }
-    .desc { font-size:15px; opacity:.9; margin-bottom:30px; }
-
-    .packages {
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      justify-content:center;
-      margin-bottom:25px;
-    }
-
-    .btn {
-      padding:12px 20px;
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      color:#fff;
-      font-weight:600;
-      transition:transform .2s;
-    }
-
-    .btn:hover { transform:scale(1.05); }
-
-    .purple{background:#8b5cf6;}
-    .pink{background:#ec4899;}
-    .orange{background:#f97316;}
-    .blue{background:#3b82f6;}
-    .red{background:#ef4444;}
-    .teal{background:#14b8a6;}
-    .green{background:#22c55e;}
-    .whatsapp{background:#25D366;color:#000;}
-
-    footer { font-size:13px; opacity:.8; margin-top:20px; }
-
-    /* Modal Styles */
-    .modal-overlay {
-      display:none;
-      position:fixed;
-      top:0; left:0; right:0; bottom:0;
-      background:rgba(0,0,0,0.8);
-      justify-content:center;
-      align-items:center;
-      z-index:1000;
-    }
-
-    .modal {
-      background:#fff;
-      color:#000;
-      border-radius:16px;
-      padding:30px;
-      width:90%;
-      max-width:420px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,0.4);
-      position:relative;
-    }
-
-    .modal h2 {
-      margin-bottom:10px;
-      font-size:26px;
-      color:#333;
-    }
-
-    .modal .price {
-      font-size:36px;
-      font-weight:700;
-      color:#8b5cf6;
-      margin:15px 0;
-    }
-
-    .input-group {
-      margin:20px 0;
-      text-align:left;
-    }
-
-    .input-group label {
-      display:block;
-      margin-bottom:8px;
-      font-weight:600;
-      color:#444;
-    }
-
-    .input-group input {
-      width:100%;
-      padding:14px;
-      border:2px solid #ddd;
-      border-radius:12px;
-      font-size:18px;
-      text-align:center;
-    }
-
-    .input-group input:focus {
-      outline:none;
-      border-color:#8b5cf6;
-    }
-
-    .error {
-      color:#ef4444;
-      font-size:14px;
-      margin-top:8px;
-      min-height:20px;
-    }
-
-    .pay-btn {
-      background:#8b5cf6;
-      padding:14px 30px;
-      font-size:18px;
-      margin-top:15px;
-      opacity:0.5;
-      cursor:not-allowed;
-    }
-
-    .pay-btn.enabled {
-      opacity:1;
-      cursor:pointer;
-    }
-
-    .pay-btn.enabled:hover {
-      transform:scale(1.05);
-    }
-
-    .close-btn {
-      position:absolute;
-      top:10px;
-      right:15px;
-      font-size:32px;
-      cursor:pointer;
-      color:#aaa;
-    }
-
-    .close-btn:hover { color:#000; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mood Wi-Fi - Pricing Plans</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #4a0e4e, #0a1f3f);
+            color: white;
+            margin: 0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #ff3366;
+            margin-bottom: 40px;
+        }
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .plan {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 15px;
+            padding: 30px;
+            width: 280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .plan-header {
+            margin-bottom: 20px;
+        }
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .speed {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .price {
+            font-size: 24px;
+            color: #ff3366;
+            margin: 10px 0;
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 20px 0;
+        }
+        .features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        .features li:before {
+            content: "✓";
+            color: #ff3366;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .btn {
+            background: #ff3366;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover {
+            background: #e62b5a;
+        }
+        .basic .btn {
+            background: #ff6666;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h2>PRICING PLAN</h2>
+        <h1>Choose your plan</h1>
+        <div class="plans">
+            <!-- 10Mbps Plan -->
+            <div class="plan basic">
+                <div class="plan-header">
+                    <div class="icons">
+                        <div class="icon">📶</div>
+                    </div>
+                    <div class="speed">10Mbps</div>
+                    <div class="price">Ksh. 1600/ Month</div>
+                </div>
+                <ul class="features">
+                    <li>Fast site access</li>
+                    <li>Video Conferencing</li>
+                    <li>Connect multiple users</li>
+                    <li>WiFi router & prevention</li>
+                </ul>
+                <button class="btn">Get Started</button>
+            </div>
 
-<div class="overlay">
-  <div>
-    <h1>AppleWorm studios</h1>
-    <div class="subtitle">Access Fast and Affordable Packages</div>
-    <div class="desc">Select a package to get connected</div>
+            <!-- 15Mbps Plan -->
+            <div class="plan">
+                <div class="plan-header">
+                    <div class="icons">
+                        <div class="icon">📶</div>
+                        <div class="icon">🏠</div>
+                    </div>
+                    <div class="speed">15Mbps</div>
+                    <div class="price">Ksh. 2,000/ Month</div>
+                </div>
+                <ul class="features">
+                    <li>Home Connection</li>
+                    <li>Connect multiple users</li>
+                    <li>WiFi router & prevention</li>
+                    <li>Unlimited devices</li>
+                </ul>
+                <button class="btn">Subscribe</button>
+            </div>
 
-    <div class="packages">
-      <button class="btn purple" onclick="openModal('1 Hour Unlimited',10)">1 HOUR @10/-</button>
-      <button class="btn pink" onclick="openModal('3 Hours Unlimited',20)">3 HOURS @20/-</button>
-      <button class="btn orange" onclick="openModal('6 Hours Unlimited',30)">6 HOURS @30/-</button>
-      <button class="btn blue" onclick="openModal('12 Hours Unlimited',40)">12 HOURS @40/-</button>
-      <button class="btn red" onclick="openModal('24 Hours Unlimited',50)">24 HOURS @50/-</button>
-      <button class="btn orange" onclick="openModal('3 Days Unlimited',120)">3 DAYS @120/-</button>
-      <button class="btn teal" onclick="openModal('7 Days Unlimited',300)">7 DAYS @300/-</button>
-      <button class="btn green" onclick="openModal('1 Month Unlimited',800)">1 MONTH @800/-</button>
+            <!-- 20Mbps Plan -->
+            <div class="plan">
+                <div class="plan-header">
+                    <div class="icons">
+                        <div class="icon">📶</div>
+                        <div class="icon">📺</div>
+                    </div>
+                    <div class="speed">20Mbps</div>
+                    <div class="price">Ksh. 2,500 / Month</div>
+                </div>
+                <ul class="features">
+                    <li>High Quality Streaming</li>
+                    <li>Connect multiple users</li>
+                    <li>WiFi router & prevention</li>
+                    <li>Unlimited devices</li>
+                </ul>
+                <button class="btn">Subscribe</button>
+            </div>
+
+            <!-- 30Mbps Plan -->
+            <div class="plan">
+                <div class="plan-header">
+                    <div class="icons">
+                        <div class="icon">📶</div>
+                        <div class="icon">🏠</div>
+                        <div class="icon">📺</div>
+                    </div>
+                    <div class="speed">30Mbps</div>
+                    <div class="price">Ksh. 3,300/ Month</div>
+                </div>
+                <ul class="features">
+                    <li>High Quality Streaming</li>
+                    <li>Connect multiple users</li>
+                    <li>WiFi router & prevention</li>
+                    <li>Unlimited devices</li>
+                </ul>
+                <button class="btn">Subscribe</button>
+            </div>
+        </div>
     </div>
-
-    <button class="btn whatsapp" onclick="contactSupport()">
-      Customer Support
-    </button>
-
-    <footer>© 2025 APPLEWORM studios corp</footer>
-  </div>
-</div>
-
-<!-- Payment Modal -->
-<div class="modal-overlay" id="paymentModal">
-  <div class="modal">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <h2 id="modalPackage">Package Name</h2>
-    <div class="price" id="modalAmount">KSh 0</div>
-
-    <div class="input-group">
-      <label for="phoneInput">Enter Your M-Pesa Number</label>
-      <input type="tel" id="phoneInput" placeholder="e.g. 0712345678" maxlength="10" />
-      <div class="error" id="errorMsg"></div>
-    </div>
-
-    <button class="btn pay-btn" id="payButton" disabled>Pay Now</button>
-  </div>
-</div>
-
-<script>
-  let selectedPackage = '';
-  let selectedAmount = 0;
-
-  function openModal(pkg, amount) {
-    selectedPackage = pkg;
-    selectedAmount = amount;
-
-    document.getElementById('modalPackage').textContent = pkg;
-    document.getElementById('modalAmount').textContent = 'KSh ' + amount;
-    document.getElementById('phoneInput').value = '';
-    document.getElementById('errorMsg').textContent = '';
-    document.getElementById('payButton').disabled = true;
-    document.getElementById('payButton').classList.remove('enabled');
-
-    document.getElementById('paymentModal').style.display = 'flex';
-    document.getElementById('phoneInput').focus();
-  }
-
-  function closeModal() {
-    document.getElementById('paymentModal').style.display = 'none';
-  }
-
-  // Validate phone number as user types
-  document.getElementById('phoneInput').addEventListener('input', function(e) {
-    let phone = e.target.value.replace(/\D/g, ''); // Remove non-digits
-    e.target.value = phone;
-
-    const errorMsg = document.getElementById('errorMsg');
-    const payBtn = document.getElementById('payButton');
-
-    if (phone.length === 10 && (phone.startsWith('07') || phone.startsWith('01'))) {
-      errorMsg.textContent = '';
-      payBtn.disabled = false;
-      payBtn.classList.add('enabled');
-    } else {
-      if (phone.length > 0) {
-        if (phone.length !== 10) {
-          errorMsg.textContent = 'Phone number must be exactly 10 digits';
-        } else {
-          errorMsg.textContent = 'Must start with 07 or 01';
-        }
-      } else {
-        errorMsg.textContent = '';
-      }
-      payBtn.disabled = true;
-      payBtn.classList.remove('enabled');
-    }
-  });
-
-  // Pay button click → send to WhatsApp
-  document.getElementById('payButton').addEventListener('click', function() {
-    if (this.disabled) return;
-
-    const phone = document.getElementById('phoneInput').value;
-    const message = `Hello AppleWorm Support,\n\nI'd like to purchase:\n*Package:* ${selectedPackage}\n*Amount:* KSh ${selectedAmount}\n*My M-Pesa Number:* ${phone}\n\nPlease process my payment. Thank you!`;
-
-    const whatsappUrl = `https://wa.me/254719111040?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, '_blank');
-    closeModal();
-  });
-
-  // Close modal when clicking outside
-  window.onclick = function(event) {
-    const modal = document.getElementById('paymentModal');
-    if (event.target === modal) {
-      closeModal();
-    }
-  }
-
-  function contactSupport() {
-    const phone = "254719111040";
-    const whatsapp = "https://wa.me/" + phone;
-
-    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      window.location.href = whatsapp;
-    } else {
-      window.open(whatsapp, "_blank");
-    }
-  }
-</script>
-
 </body>
 </html>
