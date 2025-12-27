@@ -5,20 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AppleWorm WiFi</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
     body {
       min-height: 100vh;
-      background: url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d") center/cover no-repeat;
+      background: url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d")
+        center/cover no-repeat;
       color: #fff;
     }
 
@@ -32,33 +27,9 @@
       padding: 20px;
     }
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 42px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    h1 span {
-      font-size: 36px;
-      margin-right: 8px;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .desc {
-      font-size: 15px;
-      opacity: 0.9;
-      margin-bottom: 30px;
-    }
+    h1 { font-size: 42px; margin-bottom: 10px; }
+    .subtitle { font-size: 20px; margin-bottom: 6px; font-weight: 600; }
+    .desc { font-size: 15px; margin-bottom: 30px; opacity: 0.9; }
 
     .packages {
       display: flex;
@@ -71,18 +42,14 @@
     .btn {
       padding: 12px 20px;
       border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
       border: none;
       cursor: pointer;
       color: #fff;
-      transition: transform 0.2s, opacity 0.2s;
+      font-weight: 600;
+      transition: transform .2s;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
-    }
+    .btn:hover { transform: scale(1.05); }
 
     .purple { background: #8b5cf6; }
     .pink { background: #ec4899; }
@@ -92,53 +59,39 @@
     .teal { background: #14b8a6; }
     .green { background: #22c55e; }
 
-    .call {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #10b981;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      text-decoration: none;
-      color: #fff;
-    }
-
-    footer {
-      font-size: 13px;
-      opacity: 0.8;
-    }
+    footer { font-size: 13px; opacity: 0.8; }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="container">
-      
-      <h1><span>🛜</span>AppleWorm WiFi</h1>
-      <div class="subtitle">Access Fast and Affordable Packages</div>
-      <div class="desc">Select a package to get connected</div>
 
-      <div class="packages">
-        <button class="btn purple">1 HOUR UNLIMITED @10/-</button>
-        <button class="btn pink">3 HOURS UNLIMITED @20/-</button>
-        <button class="btn orange">6 HOURS UNLIMITED @30/-</button>
+<div class="overlay">
+  <div>
+    <h1>🛜AppleWorm WiFi</h1>
+    <div class="subtitle">Access Fast and Affordable Packages</div>
+    <div class="desc">Select a package to get connected</div>
 
-        <button class="btn blue">12 HOURS UNLIMITED @40/-</button>
-        <button class="btn red">24 HOURS UNLIMITED @50/-</button>
-        <button class="btn orange">3 DAYS UNLIMITED @120/-</button>
-
-        <button class="btn teal">7 DAYS UNLIMITED @300/-</button>
-        <button class="btn green">1 MONTH UNLIMITED @800/-</button>
-      </div>
-
-      <a class="call" href="tel:0719111040">📞 Call us: 0719111040</a>
-
-      <footer>
-        Copyright © 2025 APPLEWORM WIFI LIMITED
-      </footer>
-
+    <div class="packages">
+      <button class="btn purple" onclick="goPay('1 Hour Unlimited',10)">1 HOUR @10/-</button>
+      <button class="btn pink" onclick="goPay('3 Hours Unlimited',20)">3 HOURS @20/-</button>
+      <button class="btn orange" onclick="goPay('6 Hours Unlimited',30)">6 HOURS @30/-</button>
+      <button class="btn blue" onclick="goPay('12 Hours Unlimited',40)">12 HOURS @40/-</button>
+      <button class="btn red" onclick="goPay('24 Hours Unlimited',50)">24 HOURS @50/-</button>
+      <button class="btn orange" onclick="goPay('3 Days Unlimited',120)">3 DAYS @120/-</button>
+      <button class="btn teal" onclick="goPay('7 Days Unlimited',300)">7 DAYS @300/-</button>
+      <button class="btn green" onclick="goPay('1 Month Unlimited',800)">1 MONTH @800/-</button>
     </div>
+
+    <footer>© 2025 APPLEWORM WIFI LIMITED</footer>
   </div>
+</div>
+
+<script>
+  function goPay(pkg, amount) {
+    window.location.href =
+      "pay.html?package=" + encodeURIComponent(pkg) +
+      "&amount=" + amount;
+  }
+</script>
+
 </body>
 </html>
