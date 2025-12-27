@@ -1,189 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mood Wi-Fi - Pricing Plans</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #4a0e4e, #0a1f3f);
-            color: white;
-            margin: 0;
-            padding: 40px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #ff3366;
-            margin-bottom: 40px;
-        }
-        .plans {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .plan {
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
-            border-radius: 15px;
-            padding: 30px;
-            width: 280px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .plan-header {
-            margin-bottom: 20px;
-        }
-        .icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .icon {
-            width: 50px;
-            height: 50px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        .speed {
-            font-size: 36px;
-            font-weight: bold;
-        }
-        .price {
-            font-size: 24px;
-            color: #ff3366;
-            margin: 10px 0;
-        }
-        .features {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            margin: 20px 0;
-        }
-        .features li {
-            padding: 8px 0;
-            position: relative;
-            padding-left: 25px;
-        }
-        .features li:before {
-            content: "✓";
-            color: #ff3366;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        .btn {
-            background: #ff3366;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-        }
-        .btn:hover {
-            background: #e62b5a;
-        }
-        .basic .btn {
-            background: #ff6666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AppleWorm WiFi</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+
+    body {
+      min-height:100vh;
+      background:url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d") center/cover no-repeat fixed;
+      color:#fff;
+    }
+
+    .overlay {
+      min-height:100vh;
+      background:rgba(0,0,0,0.55);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    h1 { font-size:42px; margin-bottom:10px; }
+    .subtitle { font-size:20px; font-weight:600; margin-bottom:6px; }
+    .desc { font-size:15px; opacity:.9; margin-bottom:30px; }
+
+    .packages {
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      margin-bottom:25px;
+    }
+
+    .btn {
+      padding:12px 20px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      color:#fff;
+      font-weight:600;
+      transition:transform .2s;
+    }
+
+    .btn:hover { transform:scale(1.05); }
+
+    .purple{background:#8b5cf6;}
+    .pink{background:#ec4899;}
+    .orange{background:#f97316;}
+    .blue{background:#3b82f6;}
+    .red{background:#ef4444;}
+    .teal{background:#14b8a6;}
+    .green{background:#22c55e;}
+    .indigo{background:#6366f1;}
+    .whatsapp{background:#25D366;color:#000;}
+
+    footer { font-size:13px; opacity:.8; margin-top:20px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>PRICING PLAN</h2>
-        <h1>Choose your plan</h1>
-        <div class="plans">
-            <!-- 10Mbps Plan -->
-            <div class="plan basic">
-                <div class="plan-header">
-                    <div class="icons">
-                        <div class="icon">📶</div>
-                    </div>
-                    <div class="speed">10Mbps</div>
-                    <div class="price">Ksh. 1600/ Month</div>
-                </div>
-                <ul class="features">
-                    <li>Fast site access</li>
-                    <li>Video Conferencing</li>
-                    <li>Connect multiple users</li>
-                    <li>WiFi router & prevention</li>
-                </ul>
-                <button class="btn">Get Started</button>
-            </div>
 
-            <!-- 15Mbps Plan -->
-            <div class="plan">
-                <div class="plan-header">
-                    <div class="icons">
-                        <div class="icon">📶</div>
-                        <div class="icon">🏠</div>
-                    </div>
-                    <div class="speed">15Mbps</div>
-                    <div class="price">Ksh. 2,000/ Month</div>
-                </div>
-                <ul class="features">
-                    <li>Home Connection</li>
-                    <li>Connect multiple users</li>
-                    <li>WiFi router & prevention</li>
-                    <li>Unlimited devices</li>
-                </ul>
-                <button class="btn">Subscribe</button>
-            </div>
+<div class="overlay">
+  <div>
+    <h1>AppleWorm Studios</h1>
+    <div class="subtitle">Fast, Reliable & Affordable Internet</div>
+    <div class="desc">Choose a package that suits you</div>
 
-            <!-- 20Mbps Plan -->
-            <div class="plan">
-                <div class="plan-header">
-                    <div class="icons">
-                        <div class="icon">📶</div>
-                        <div class="icon">📺</div>
-                    </div>
-                    <div class="speed">20Mbps</div>
-                    <div class="price">Ksh. 2,500 / Month</div>
-                </div>
-                <ul class="features">
-                    <li>High Quality Streaming</li>
-                    <li>Connect multiple users</li>
-                    <li>WiFi router & prevention</li>
-                    <li>Unlimited devices</li>
-                </ul>
-                <button class="btn">Subscribe</button>
-            </div>
-
-            <!-- 30Mbps Plan -->
-            <div class="plan">
-                <div class="plan-header">
-                    <div class="icons">
-                        <div class="icon">📶</div>
-                        <div class="icon">🏠</div>
-                        <div class="icon">📺</div>
-                    </div>
-                    <div class="speed">30Mbps</div>
-                    <div class="price">Ksh. 3,300/ Month</div>
-                </div>
-                <ul class="features">
-                    <li>High Quality Streaming</li>
-                    <li>Connect multiple users</li>
-                    <li>WiFi router & prevention</li>
-                    <li>Unlimited devices</li>
-                </ul>
-                <button class="btn">Subscribe</button>
-            </div>
-        </div>
+    <div class="packages">
+      <button class="btn purple" onclick="bookInstallation('1 Hour Unlimited', '10/-')">1 HOUR @10/-</button>
+      <button class="btn pink" onclick="bookInstallation('3 Hours Unlimited', '20/-')">3 HOURS @20/-</button>
+      <button class="btn orange" onclick="bookInstallation('6 Hours Unlimited', '30/-')">6 HOURS @30/-</button>
+      <button class="btn blue" onclick="bookInstallation('12 Hours Unlimited', '40/-')">12 HOURS @40/-</button>
+      <button class="btn red" onclick="bookInstallation('24 Hours Unlimited', '50/-')">24 HOURS @50/-</button>
+      <button class="btn orange" onclick="bookInstallation('3 Days Unlimited', '120/-')">3 DAYS @120/-</button>
+      <button class="btn teal" onclick="bookInstallation('7 Days Unlimited', '300/-')">7 DAYS @300/-</button>
+      <button class="btn green" onclick="bookInstallation('1 Month Unlimited', '800/-')">1 MONTH @800/-</button>
+      <button class="btn indigo" onclick="bookInstallation('5Mbps Dedicated Plan', '1000/- per month')">5Mbps PLAN @1000/- Monthly</button>
     </div>
+
+    <button class="btn whatsapp" onclick="contactSupport()">
+      Customer Support
+    </button>
+
+    <footer>© 2025 APPLEWORM Studios Corp</footer>
+  </div>
+</div>
+
+<script>
+  function bookInstallation(pkg, price) {
+    const phone = "254719111040"; // Your WhatsApp number (0719111040)
+    const message = `Hello AppleWorm Support,\n\nI would like to book/install:\n*Package:* ${pkg}\n*Price:* ${price}\n\nPlease assist me with the installation and payment details. Thank you!`;
+
+    const whatsappUrl = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+    // For mobile devices, direct redirect; for desktop, open in new tab
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.location.href = whatsappUrl;
+    } else {
+      window.open(whatsappUrl, "_blank");
+    }
+  }
+
+  function contactSupport() {
+    const phone = "254719111040";
+    const whatsappUrl = "https://wa.me/" + phone;
+
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.location.href = whatsappUrl;
+    } else {
+      window.open(whatsappUrl, "_blank");
+    }
+  }
+</script>
+
 </body>
 </html>
