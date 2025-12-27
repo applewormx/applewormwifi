@@ -1,175 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appleworm WiFi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 50px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appleworm WiFi</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        h1 {
-            color: #333;
-        }
+    body {
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #a18cd1);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        padding: 50px;
+        color: #fff;
+    }
 
-        .plan-button {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px 25px;
-            font-size: 18px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    @keyframes gradientBG {
+        0%{background-position:0% 50%;}
+        50%{background-position:100% 50%;}
+        100%{background-position:0% 50%;}
+    }
 
-        .plan-button:hover {
-            background-color: #45a049;
-        }
+    h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px #333;
+    }
 
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.6);
-        }
+    p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px #333;
+    }
 
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 30px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 10px;
-            text-align: left;
-        }
+    .plan-button {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 30px;
+        font-size: 18px;
+        background: linear-gradient(45deg, #ff6a00, #ee0979);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .plan-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
 
-        .close:hover {
-            color: black;
-        }
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+    }
 
-        input[type="text"], input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            box-sizing: border-box;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+    .modal-content {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        margin: 10% auto;
+        padding: 30px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 400px;
+        color: #fff;
+        text-align: left;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    .close {
+        color: #fff;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+    .close:hover {
+        color: #000;
+    }
 
-        .error {
-            color: red;
-            font-size: 14px;
-        }
-    </style>
+    input[type="text"], input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+    }
+
+    input[type="text"] {
+        border: 2px solid #fff;
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+    }
+
+    input[type="text"]::placeholder {
+        color: #f0f0f0;
+    }
+
+    input[type="submit"] {
+        background: linear-gradient(45deg, #00f260, #0575e6);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+        background: linear-gradient(45deg, #0575e6, #00f260);
+    }
+
+    .error {
+        color: yellow;
+        font-size: 14px;
+    }
+</style>
 </head>
 <body>
 
-    <h1>Appleworm WiFi</h1>
-    <p>Choose a plan:</p>
+<h1>Appleworm WiFi</h1>
+<p>Choose a plan:</p>
 
-    <button class="plan-button" data-plan="1 hr unlimited-10">1 hr - 10</button>
-    <button class="plan-button" data-plan="3 hrs unlimited-20">3 hrs - 20</button>
-    <button class="plan-button" data-plan="6 hrs unlimited-30">6 hrs - 30</button>
-    <button class="plan-button" data-plan="12 hrs unlimited-40">12 hrs - 40</button>
-    <button class="plan-button" data-plan="24 hrs unlimited-50">24 hrs - 50</button>
-    <button class="plan-button" data-plan="3 days unlimited-120">3 days - 120</button>
-    <button class="plan-button" data-plan="7 days unlimited-300">7 days - 300</button>
-    <button class="plan-button" data-plan="1 month unlimited-800">1 month - 800</button>
+<button class="plan-button" data-plan="1 hr unlimited-10">1 hr - 10</button>
+<button class="plan-button" data-plan="3 hrs unlimited-20">3 hrs - 20</button>
+<button class="plan-button" data-plan="6 hrs unlimited-30">6 hrs - 30</button>
+<button class="plan-button" data-plan="12 hrs unlimited-40">12 hrs - 40</button>
+<button class="plan-button" data-plan="24 hrs unlimited-50">24 hrs - 50</button>
+<button class="plan-button" data-plan="3 days unlimited-120">3 days - 120</button>
+<button class="plan-button" data-plan="7 days unlimited-300">7 days - 300</button>
+<button class="plan-button" data-plan="1 month unlimited-800">1 month - 800</button>
 
-    <!-- Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Payment</h2>
-            <p id="selectedPlan"></p>
-            <form id="paymentForm">
-                <label for="phone">Enter phone number (07xxxxxxx or 01xxxxxxx):</label>
-                <input type="text" id="phone" name="phone" maxlength="10" placeholder="0712345678" required>
-                <div class="error" id="errorMsg"></div>
-                <input type="submit" value="Proceed to Pay">
-            </form>
-        </div>
+<!-- Modal -->
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Payment</h2>
+        <p id="selectedPlan"></p>
+        <form id="paymentForm">
+            <label for="phone">Enter phone number (07xxxxxxx or 01xxxxxxx):</label>
+            <input type="text" id="phone" name="phone" maxlength="10" placeholder="0712345678" required>
+            <div class="error" id="errorMsg"></div>
+            <input type="submit" value="Proceed to Pay">
+        </form>
     </div>
+</div>
 
-    <script>
-        const buttons = document.querySelectorAll('.plan-button');
-        const modal = document.getElementById('paymentModal');
-        const closeModal = document.querySelector('.close');
-        const selectedPlanText = document.getElementById('selectedPlan');
-        const paymentForm = document.getElementById('paymentForm');
-        const phoneInput = document.getElementById('phone');
-        const errorMsg = document.getElementById('errorMsg');
+<script>
+    const buttons = document.querySelectorAll('.plan-button');
+    const modal = document.getElementById('paymentModal');
+    const closeModal = document.querySelector('.close');
+    const selectedPlanText = document.getElementById('selectedPlan');
+    const paymentForm = document.getElementById('paymentForm');
+    const phoneInput = document.getElementById('phone');
+    const errorMsg = document.getElementById('errorMsg');
 
-        let selectedPlan = '';
+    let selectedPlan = '';
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                selectedPlan = button.getAttribute('data-plan');
-                selectedPlanText.textContent = `You selected: ${selectedPlan}`;
-                phoneInput.value = '';
-                errorMsg.textContent = '';
-                modal.style.display = 'block';
-            });
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            selectedPlan = button.getAttribute('data-plan');
+            selectedPlanText.textContent = `You selected: ${selectedPlan}`;
+            phoneInput.value = '';
+            errorMsg.textContent = '';
+            modal.style.display = 'block';
         });
+    });
 
-        closeModal.addEventListener('click', () => {
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
             modal.style.display = 'none';
-        });
+        }
+    });
 
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+    paymentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const phone = phoneInput.value.trim();
 
-        paymentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const phone = phoneInput.value.trim();
+        if (!/^(07|01)\d{8}$/.test(phone)) {
+            errorMsg.textContent = 'Invalid phone number format.';
+            return;
+        }
 
-            if (!/^(07|01)\d{8}$/.test(phone)) {
-                errorMsg.textContent = 'Invalid phone number format.';
-                return;
-            }
-
-            // Replace this with real payment integration
-            alert(`Proceeding to payment for ${selectedPlan} with phone number: ${phone}`);
-            modal.style.display = 'none';
-        });
-    </script>
+        alert(`Proceeding to payment for ${selectedPlan} with phone number: ${phone}`);
+        modal.style.display = 'none';
+    });
+</script>
 
 </body>
 </html>
