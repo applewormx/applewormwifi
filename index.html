@@ -11,38 +11,32 @@
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
 
     body {
-      color:#fff;
-      scroll-behavior: smooth;
-    }
-
-    /* Landing Section with Logo */
-    .landing {
       min-height:100vh;
-      background:#000 url("https://images.unsplash.com/photo-1538379960090-2d5f2d7d7e6d?auto=format&fit=crop&q=80") center/cover no-repeat fixed;
+      background:url("https://images.unsplash.com/photo-1517430816045-df4b7de11d1d") center/cover no-repeat fixed;
+      color:#fff;
       display:flex;
-      flex-direction:column;
       justify-content:center;
       align-items:center;
-      text-align:center;
-      padding:40px 20px;
       position:relative;
     }
 
-    .landing::before {
+    body::before {
       content:'';
       position:absolute;
       top:0; left:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.5);
+      background:rgba(0,0,0,0.65); /* Dark overlay for better readability */
       z-index:1;
     }
 
     .landing-content {
       position:relative;
       z-index:2;
+      text-align:center;
+      max-width:90vw;
     }
 
     .logo-container {
-      margin-bottom:60px;
+      margin-bottom:80px;
       animation: float 8s ease-in-out infinite;
     }
 
@@ -50,7 +44,7 @@
       width:400px;
       max-width:90vw;
       height:auto;
-      filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
+      filter: drop-shadow(0 0 30px rgba(255,255,255,0.5));
       animation: glow 4s ease-in-out infinite alternate;
     }
 
@@ -60,81 +54,110 @@
     }
 
     @keyframes glow {
-      from { filter: drop-shadow(0 0 20px rgba(255,255,255,0.3)); }
-      to { filter: drop-shadow(0 0 40px rgba(255,255,255,0.6)); }
+      from { filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); }
+      to { filter: drop-shadow(0 0 40px rgba(255,255,255,0.7)); }
     }
 
-    .landing-buttons {
+    .buttons-container {
       display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
+      flex-direction:column;
+      align-items:center;
       gap:40px;
-      margin-bottom:40px;
+    }
+
+    .main-buttons {
+      display:flex;
+      justify-content:center;
+      gap:60px;
+      flex-wrap:wrap;
     }
 
     .btn-large {
       background:#25D366;
       color:#000;
-      padding:18px 60px;
+      padding:20px 60px;
       border:none;
       border-radius:999px;
       font-weight:700;
-      font-size:21px;
+      font-size:22px;
       cursor:pointer;
       transition:all .3s;
       min-width:300px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.5);
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
     }
 
     .btn-large:hover {
       transform:translateY(-10px) scale(1.05);
-      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+      box-shadow:0 20px 50px rgba(0,0,0,0.7);
     }
 
-    .support-btn-large {
+    .support-btn {
       background:#25D366;
       color:#000;
-      padding:16px 70px;
+      padding:18px 80px;
       border:none;
       border-radius:999px;
       font-weight:600;
-      font-size:19px;
+      font-size:20px;
       cursor:pointer;
       transition:transform .2s;
     }
 
-    .support-btn-large:hover {
+    .support-btn:hover {
       transform:scale(1.08);
     }
 
-    /* Home Plans Section */
-    #home-plans {
-      min-height:100vh;
-      background:rgba(0,0,0,0.9);
-      padding:100px 20px;
+    /* Modal Styles */
+    .modal {
+      display:none;
+      position:fixed;
+      z-index:1000;
+      left:0; top:0;
+      width:100%; height:100%;
+      background-color:rgba(0,0,0,0.9);
+      align-items:center;
+      justify-content:center;
+      padding:20px;
     }
 
-    .container {
-      max-width:1400px;
-      width:100%;
-      margin:0 auto;
-      text-align:center;
+    .modal-content {
+      background:linear-gradient(135deg, rgba(20,20,60,0.95), rgba(0,40,80,0.95));
+      backdrop-filter:blur(12px);
+      border-radius:24px;
+      padding:40px 30px;
+      max-width:1200px;
+      width:95%;
+      max-height:90vh;
+      overflow-y:auto;
+      position:relative;
+      box-shadow:0 20px 60px rgba(0,0,0,0.8);
     }
 
-    h1 { font-size:48px; margin-bottom:12px; font-weight:700; }
-    .subtitle { font-size:26px; font-weight:600; margin-bottom:10px; }
-    .desc { font-size:17px; opacity:.95; margin-bottom:50px; }
+    .close-btn {
+      position:absolute;
+      top:20px; right:30px;
+      font-size:40px;
+      font-weight:bold;
+      color:#fff;
+      cursor:pointer;
+      opacity:0.8;
+    }
+
+    .close-btn:hover { opacity:1; }
+
+    .modal h1 { font-size:46px; margin-bottom:10px; }
+    .modal .subtitle { font-size:26px; margin-bottom:10px; }
+    .modal .desc { font-size:17px; opacity:0.95; margin-bottom:50px; }
 
     .packages {
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
       gap:30px;
-      margin-bottom:50px;
     }
 
     .plan-card {
       background:rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
+      backdrop-filter:blur(10px);
       border-radius:20px;
       padding:30px 20px;
       text-align:center;
@@ -165,161 +188,121 @@
     }
 
     .choose-btn:hover { transform:scale(1.08); }
-
-    footer { font-size:14px; opacity:.8; padding:40px; text-align:center; background:#000; }
-
-    /* Hotspot Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      background: linear-gradient(135deg, rgba(20,20,60,0.95), rgba(0,40,80,0.95));
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      padding: 40px 30px;
-      max-width: 1200px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 20px; right: 30px;
-      font-size: 40px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      opacity: 0.8;
-    }
-
-    .close-btn:hover { opacity: 1; }
   </style>
 </head>
 <body>
 
-  <!-- Landing with Your Original Logo -->
-  <section class="landing">
-    <div class="landing-content">
-      <div class="logo-container">
-        <img src="logo.png" alt="AppleWorm Logo" class="logo">
-        <!-- Replace "logo.png" with your actual filename -->
-      </div>
+<div class="landing-content">
+  <!-- Your Original Logo -->
+  <div class="logo-container">
+    <img src="logo.png" alt="AppleWorm Logo" class="logo">
+    <!-- Upload your logo as logo.png in the same folder -->
+  </div>
 
-      <div class="landing-buttons">
-        <button class="btn-large" onclick="scrollToSection('home-plans')">Home Internet</button>
-        <button class="btn-large" onclick="openModal()">Pay As You Go Hotspot</button>
-      </div>
-
-      <button class="support-btn-large" onclick="contactSupport()">Customer Support / Inquiries</button>
+  <div class="buttons-container">
+    <div class="main-buttons">
+      <button class="btn-large" onclick="openHomeModal()">Home Internet</button>
+      <button class="btn-large" onclick="openHotspotModal()">Pay As You Go Hotspot</button>
     </div>
-  </section>
 
-  <!-- Home Internet Plans -->
-  <section id="home-plans">
-    <div class="container">
-      <h1>mood Wi-Fi</h1>
-      <div class="subtitle">Unlimited High-Speed Dedicated Home Internet</div>
-      <div class="desc">No data caps • Reliable connection • Free installation in selected areas<br>Contact us on WhatsApp for coverage check</div>
+    <button class="support-btn" onclick="contactSupport()">Customer Support / Inquiries</button>
+  </div>
+</div>
 
-      <div class="packages">
-        <div class="plan-card">
-          <div class="speed">5 Mbps</div>
-          <div class="price">KSh 1,000/- Monthly</div>
-          <div class="capabilities">Perfect for browsing, social media, email, and light streaming<br>Ideal for 1-3 users</div>
-          <button class="choose-btn" onclick="bookInstallation('5 Mbps Unlimited', 'KSh 1,000/- Monthly')">Choose Plan</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">10 Mbps</div>
-          <div class="price">KSh 1,600/- Monthly</div>
-          <div class="capabilities">Great for HD streaming, video calls, online learning<br>Suitable for 4-6 users</div>
-          <button class="choose-btn" onclick="bookInstallation('10 Mbps Unlimited', 'KSh 1,600/- Monthly')">Choose Plan</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">15 Mbps</div>
-          <div class="price">KSh 2,000/- Monthly</div>
-          <div class="capabilities">Excellent for 4K streaming, gaming, and multiple devices<br>Good for 6-10 users</div>
-          <button class="choose-btn" onclick="bookInstallation('15 Mbps Unlimited', 'KSh 2,000/- Monthly')">Choose Plan</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">20 Mbps</div>
-          <div class="price">KSh 2,500/- Monthly</div>
-          <div class="capabilities">Heavy multitasking, multiple 4K streams, remote work<br>Ideal for 10+ users or small offices</div>
-          <button class="choose-btn" onclick="bookInstallation('20 Mbps Unlimited', 'KSh 2,500/- Monthly')">Choose Plan</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">30 Mbps</div>
-          <div class="price">KSh 2,999/- Monthly</div>
-          <div class="capabilities">Premium speed for power users, businesses, 8K streaming<br>No slowdowns even under heavy load</div>
-          <button class="choose-btn" onclick="bookInstallation('30 Mbps Unlimited', 'KSh 2,999/- Monthly')">Choose Plan</button>
-        </div>
+<!-- Home Internet Popup Modal -->
+<div id="homeModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeHomeModal()">&times;</span>
+    <h1>mood Wi-Fi</h1>
+    <div class="subtitle">Unlimited High-Speed Dedicated Home Internet</div>
+    <div class="desc">No data caps • Reliable connection • Free installation in selected areas<br>Contact us on WhatsApp for coverage check</div>
+
+    <div class="packages">
+      <div class="plan-card">
+        <div class="speed">5 Mbps</div>
+        <div class="price">KSh 1,000/- Monthly</div>
+        <div class="capabilities">Perfect for browsing, social media, email, and light streaming<br>Ideal for 1-3 users</div>
+        <button class="choose-btn" onclick="bookHome('5 Mbps Unlimited', 'KSh 1,000/- Monthly')">Choose Plan</button>
       </div>
-    </div>
-  </section>
-
-  <!-- Hotspot Modal -->
-  <div id="hotspotModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h1>mood Wi-Fi Hotspot Packages</h1>
-      <div class="subtitle">Pay As You Go – Affordable & Flexible</div>
-      <div class="desc">Perfect for short-term use, visitors, events, or backup connectivity</div>
-
-      <div class="packages">
-        <div class="plan-card">
-          <div class="speed">1 Hour</div>
-          <div class="price">KSh 10/-</div>
-          <div class="capabilities">Quick access for browsing, chats, or emails</div>
-          <button class="choose-btn" onclick="bookHotspot('1 Hour Hotspot', 'KSh 10/-')">Get Access</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">3 Hours</div>
-          <div class="price">KSh 20/-</div>
-          <div class="capabilities">Extended session for work or streaming</div>
-          <button class="choose-btn" onclick="bookHotspot('3 Hours Hotspot', 'KSh 20/-')">Get Access</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">9 Hours</div>
-          <div class="price">KSh 30/-</div>
-          <div class="capabilities">Full-day productivity without limits</div>
-          <button class="choose-btn" onclick="bookHotspot('9 Hours Hotspot', 'KSh 30/-')">Get Access</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">1 Day</div>
-          <div class="price">KSh 50/-</div>
-          <div class="capabilities">24 hours unlimited – great for visitors</div>
-          <button class="choose-btn" onclick="bookHotspot('1 Day Hotspot', 'KSh 50/-')">Get Access</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">1 Week</div>
-          <div class="price">KSh 300/-</div>
-          <div class="capabilities">7 days of flexible hotspot access</div>
-          <button class="choose-btn" onclick="bookHotspot('1 Week Hotspot', 'KSh 300/-')">Get Access</button>
-        </div>
-        <div class="plan-card">
-          <div class="speed">1 Month</div>
-          <div class="price">KSh 900/-</div>
-          <div class="capabilities">30 days unlimited – best value</div>
-          <button class="choose-btn" onclick="bookHotspot('1 Month Hotspot', 'KSh 900/-')">Get Access</button>
-        </div>
+      <div class="plan-card">
+        <div class="speed">10 Mbps</div>
+        <div class="price">KSh 1,600/- Monthly</div>
+        <div class="capabilities">Great for HD streaming, video calls, online learning<br>Suitable for 4-6 users</div>
+        <button class="choose-btn" onclick="bookHome('10 Mbps Unlimited', 'KSh 1,600/- Monthly')">Choose Plan</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">15 Mbps</div>
+        <div class="price">KSh 2,000/- Monthly</div>
+        <div class="capabilities">Excellent for 4K streaming, gaming, and multiple devices<br>Good for 6-10 users</div>
+        <button class="choose-btn" onclick="bookHome('15 Mbps Unlimited', 'KSh 2,000/- Monthly')">Choose Plan</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">20 Mbps</div>
+        <div class="price">KSh 2,500/- Monthly</div>
+        <div class="capabilities">Heavy multitasking, multiple 4K streams, remote work<br>Ideal for 10+ users or small offices</div>
+        <button class="choose-btn" onclick="bookHome('20 Mbps Unlimited', 'KSh 2,500/- Monthly')">Choose Plan</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">30 Mbps</div>
+        <div class="price">KSh 2,999/- Monthly</div>
+        <div class="capabilities">Premium speed for power users, businesses, 8K streaming<br>No slowdowns even under heavy load</div>
+        <button class="choose-btn" onclick="bookHome('30 Mbps Unlimited', 'KSh 2,999/- Monthly')">Choose Plan</button>
       </div>
     </div>
   </div>
+</div>
 
-  <footer>© 2025 APPLEWORM Studios Corp | one ping to rule them all</footer>
+<!-- Hotspot Popup Modal -->
+<div id="hotspotModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeHotspotModal()">&times;</span>
+    <h1>mood Wi-Fi Hotspot Packages</h1>
+    <div class="subtitle">Pay As You Go – Affordable & Flexible</div>
+    <div class="desc">Perfect for short-term use, visitors, events, or backup connectivity</div>
+
+    <div class="packages">
+      <div class="plan-card">
+        <div class="speed">1 Hour</div>
+        <div class="price">KSh 10/-</div>
+        <div class="capabilities">Quick access for browsing, chats, or emails</div>
+        <button class="choose-btn" onclick="bookHotspot('1 Hour Hotspot', 'KSh 10/-')">Get Access</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">3 Hours</div>
+        <div class="price">KSh 20/-</div>
+        <div class="capabilities">Extended session for work or streaming</div>
+        <button class="choose-btn" onclick="bookHotspot('3 Hours Hotspot', 'KSh 20/-')">Get Access</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">9 Hours</div>
+        <div class="price">KSh 30/-</div>
+        <div class="capabilities">Full-day productivity without limits</div>
+        <button class="choose-btn" onclick="bookHotspot('9 Hours Hotspot', 'KSh 30/-')">Get Access</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">1 Day</div>
+        <div class="price">KSh 50/-</div>
+        <div class="capabilities">24 hours unlimited – great for visitors</div>
+        <button class="choose-btn" onclick="bookHotspot('1 Day Hotspot', 'KSh 50/-')">Get Access</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">1 Week</div>
+        <div class="price">KSh 300/-</div>
+        <div class="capabilities">7 days of flexible hotspot access</div>
+        <button class="choose-btn" onclick="bookHotspot('1 Week Hotspot', 'KSh 300/-')">Get Access</button>
+      </div>
+      <div class="plan-card">
+        <div class="speed">1 Month</div>
+        <div class="price">KSh 900/-</div>
+        <div class="capabilities">30 days unlimited – best value</div>
+        <button class="choose-btn" onclick="bookHotspot('1 Month Hotspot', 'KSh 900/-')">Get Access</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
-  function bookInstallation(pkg, price) {
+  function bookHome(pkg, price) {
     const message = `Hello mood Wi-Fi,\n\nI want to sign up for:\n*Plan:* ${pkg}\n*Price:* ${price}\n\nPlease check coverage in my area and guide me on installation & payment. Thank you!`;
     openWhatsApp(message);
   }
@@ -343,21 +326,29 @@
     }
   }
 
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  // Modal controls
+  function openHomeModal() {
+    document.getElementById("homeModal").style.display = "flex";
   }
 
-  function openModal() {
+  function closeHomeModal() {
+    document.getElementById("homeModal").style.display = "none";
+  }
+
+  function openHotspotModal() {
     document.getElementById("hotspotModal").style.display = "flex";
   }
 
-  function closeModal() {
+  function closeHotspotModal() {
     document.getElementById("hotspotModal").style.display = "none";
   }
 
+  // Close modal when clicking outside
   window.onclick = function(event) {
-    const modal = document.getElementById("hotspotModal");
-    if (event.target === modal) closeModal();
+    const homeModal = document.getElementById("homeModal");
+    const hotspotModal = document.getElementById("hotspotModal");
+    if (event.target === homeModal) closeHomeModal();
+    if (event.target === hotspotModal) closeHotspotModal();
   }
 </script>
 
